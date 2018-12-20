@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>登录页</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link type="text/css" rel="stylesheet" href="css/slide-unlock.css">
+<!-- -->
+<script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+<script src="js/jquery.min.js"></script>
+<script>$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.message').fadeOut('slow', function(c){
+	  		$('.message').remove();
+		});
+	});	  
+});
+</script>
+
+	<style>
+		#righter{
+			float: right;
+		}
+		#label,#labelTip{
+			font-size: 20px;
+			font-family: "宋体";
+		}
+	</style>
+</head>
+
+
+
+<body>
+<!-- contact-form -->	
+<div class="message warning">
+<div class="inset">
+	<div class="login-head">
+		<h1>登录入口</h1>
+		 <div class="alert-close"> </div> 			
+	</div>
+		<form>
+			<li>
+				<input type="text" class="text" id="student"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon user"></a>
+			</li>
+				<div class="clear"> </div>
+			<li>
+				<input type="password" id="stupwd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"> <a href="#" class="icon lock"></a>
+			</li>
+			<li>
+				<div id="demo">
+					<div id="slider">
+						<div id="slider_bg"></div>
+						<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
+					</div>
+					<script src="js/jquery-1.10.2.js"></script>
+					<script type="text/javascript" src="js/jquery.slideunlock.js"></script>
+					<script type="text/javascript">
+                        $(function () {
+                            var slider = new SliderUnlock("#slider",{
+                                successLabelTip : "验证成功"
+                            },function(){
+                                //当验证成功，返回
+                                $("#labelTip").html("验证成功");
+
+                                // slider.init();
+                            });
+                            slider.init();
+                        });
+					</script>
+				</div>
+			</li>
+
+
+
+			<div class="clear"> </div>
+			<div class="button">
+				<input type="button"  value="学生登录" id="lefter">
+				<input type="button"  value="管理员登录" id="righter">
+
+				<!--<h4><a href="#">忘记密码？15225950823</a></h4>-->
+						  <div class="clear">  </div>	
+			</div>
+				
+		</form>
+		</div>					
+	</div>
+	</div>
+	<div class="clear"> </div>
+<!--- footer --->
+<div class="footer">
+	<p>高校后勤管理系统</p>
+</div>
+
+</body>
+<script type="text/javascript">
+// ------------------------------------后勤人员登录------------------------------------------------------
+var path = "/" + location.pathname.split("/")[1];
+	$('#righter').click(function () {
+	$.get(path+"/background/haveAname",
+		{"aname":$('#student').val(),"apwd":$('#stupwd').val(),"hdcode":$('#labelTip').text()},
+		function (data) {
+	    console.log(data);
+	if (data==1){
+		alert("名称不存在!");
+		window.location.href="login.html";
+	}else if(data==2) {
+        alert("密码不正确!");
+        window.location.href="login.html";
+    }else if(data==3) {
+		alert("滑动验证未通过!");
+        window.location.href="login.html";
+    }else {
+        alert("ok");
+        window.location.href="index.html";
+    		}
+
+		});
+});
+
+	//-------------------------------学生登录---------------------------------------------------------
+/*$('#lefter').click(function () {
+    $.get(path+"/forward/haveAname",
+        {"aname":$('#student').val(),"apwd":$('#stupwd').val()},
+        function (data) {
+            console.log(data);
+            if (data==1){
+                alert("名称不存在!");
+            }else if(data==2) {
+                alert("密码不正确!");
+            }else {
+                console.log("ok");
+            }
+            /!*window.location.href = "index.html";*!/
+        }
+    );
+},"json");*/
+
+</script>
+</html>
