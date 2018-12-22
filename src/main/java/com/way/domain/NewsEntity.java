@@ -10,8 +10,9 @@ public class NewsEntity {
     private String nclass;
     private String ncontent;
     private Timestamp ndate;
-    private Integer uid;
+    private Integer aid;
     private String ntitle;
+    private String nstatus;
 
     @Id
     @Column(name = "nid")
@@ -54,13 +55,13 @@ public class NewsEntity {
     }
 
     @Basic
-    @Column(name = "uid")
-    public Integer getUid() {
-        return uid;
+    @Column(name = "aid")
+    public Integer getAid() {
+        return aid;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 
     @Basic
@@ -71,6 +72,16 @@ public class NewsEntity {
 
     public void setNtitle(String ntitle) {
         this.ntitle = ntitle;
+    }
+
+    @Basic
+    @Column(name = "nstatus")
+    public String getNstatus() {
+        return nstatus;
+    }
+
+    public void setNstatus(String nstatus) {
+        this.nstatus = nstatus;
     }
 
     @Override
@@ -84,8 +95,9 @@ public class NewsEntity {
         if (nclass != null ? !nclass.equals(that.nclass) : that.nclass != null) return false;
         if (ncontent != null ? !ncontent.equals(that.ncontent) : that.ncontent != null) return false;
         if (ndate != null ? !ndate.equals(that.ndate) : that.ndate != null) return false;
-        if (uid != null ? !uid.equals(that.uid) : that.uid != null) return false;
+        if (aid != null ? !aid.equals(that.aid) : that.aid != null) return false;
         if (ntitle != null ? !ntitle.equals(that.ntitle) : that.ntitle != null) return false;
+        if (nstatus != null ? !nstatus.equals(that.nstatus) : that.nstatus != null) return false;
 
         return true;
     }
@@ -96,8 +108,9 @@ public class NewsEntity {
         result = 31 * result + (nclass != null ? nclass.hashCode() : 0);
         result = 31 * result + (ncontent != null ? ncontent.hashCode() : 0);
         result = 31 * result + (ndate != null ? ndate.hashCode() : 0);
-        result = 31 * result + (uid != null ? uid.hashCode() : 0);
+        result = 31 * result + (aid != null ? aid.hashCode() : 0);
         result = 31 * result + (ntitle != null ? ntitle.hashCode() : 0);
+        result = 31 * result + (nstatus != null ? nstatus.hashCode() : 0);
         return result;
     }
 }

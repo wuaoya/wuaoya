@@ -29,6 +29,11 @@ public class BgAdminServiceImpl implements BgAdminService {
     }
 
     @Override
+    public AdminEntity getAdmin(AdminEntity adminEntity) {
+        return bgAdminDao.getAdmin(adminEntity);
+    }
+
+    @Override
     public boolean oldApwd(AdminEntity adminEntity) {
         return bgAdminDao.oldApwd(adminEntity);
     }

@@ -39,6 +39,13 @@ public class BgAdminDaoImpl implements BgAdminDao {
     }
 
     @Override
+    public AdminEntity getAdmin(AdminEntity adminEntity) {
+        Session session=hibernateTemplate.getSessionFactory().getCurrentSession();
+        AdminEntity adminEntity1=(AdminEntity) session.createQuery("from AdminEntity where aname=?").setParameter(0,adminEntity.getAname()).uniqueResult();
+        return adminEntity1;
+    }
+
+    @Override
     public boolean oldApwd(AdminEntity adminEntity) {
         return false;
     }

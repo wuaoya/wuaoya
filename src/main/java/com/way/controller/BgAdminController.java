@@ -26,12 +26,13 @@ public class BgAdminController {
     @RequestMapping("/haveAname")
     @ResponseBody
     public String  haveAname(AdminEntity adminEntity, HttpServletRequest request, String hdcode){
-//        System.out.println(hdcode);
      if (bgAdminService.haveAname(adminEntity)){
          if (bgAdminService.trueApwd(adminEntity)){
              if (hdcode.equals("验证成功")){
              i=4;
-             request.getSession().setAttribute("CURRENT_SESSION_KEY",adminEntity);
+             AdminEntity adminEntity1=bgAdminService.getAdmin(adminEntity);
+             request.getSession().setAttribute("CURRENT_SESSION_KEY",adminEntity1);
+                 System.out.println(adminEntity1);
              return JSON.toJSONString(i);
             }
             i=3;

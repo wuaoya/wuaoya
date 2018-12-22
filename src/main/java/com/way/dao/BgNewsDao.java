@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BgNewsDao {
 //    分页和条件查询
-    public List<NewsEntity>list(int currentpage,NewsEntity newsEntity);
+    public List<NewsEntity>list(int currentpage, NewsEntity newsEntity);
 //    保存
     public boolean saveNews(NewsEntity newsEntity);
 //    改变状态

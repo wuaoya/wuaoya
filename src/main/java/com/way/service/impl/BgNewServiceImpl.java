@@ -3,7 +3,6 @@ package com.way.service.impl;
 import com.way.dao.BgNewsDao;
 import com.way.domain.NewsEntity;
 import com.way.service.BgNewService;
-import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,21 +19,21 @@ public class BgNewServiceImpl implements BgNewService {
     //----------------------------------------------------------------------------
     @Override
     public List<NewsEntity> list(int currentpage, NewsEntity newsEntity) {
-        return null;
+        return bgNewsDao.list(currentpage,newsEntity);
     }
 
     @Override
     public boolean saveNews(NewsEntity newsEntity) {
-        return false;
+        return bgNewsDao.saveNews(newsEntity);
     }
 
     @Override
     public boolean changeNews(NewsEntity newsEntity) {
-        return false;
+        return bgNewsDao.changeNews(newsEntity);
     }
 
     @Override
     public boolean updateNews(NewsEntity newsEntity) {
-        return false;
+        return bgNewsDao.updateNews(newsEntity);
     }
 }
