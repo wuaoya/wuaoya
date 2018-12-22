@@ -10,6 +10,8 @@ public interface BgAdminDao {
      //登录
   public boolean haveAname(AdminEntity adminEntity);
   public boolean trueApwd(AdminEntity adminEntity);
+//在session中存放完整的对象信息
+    public AdminEntity getAdmin(AdminEntity adminEntity);
 
      //修改个人信息
         /*改密码*/

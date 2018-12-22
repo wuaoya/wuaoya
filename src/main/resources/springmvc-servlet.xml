@@ -13,8 +13,8 @@
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--指定视图的前缀和后缀，Controller返回的String类型与这里的前后缀拼接，构成返回的视图页面地址-->
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".jsp"/>
+        <!--<property name="prefix" value="/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
     </bean>
 
     <!--开启注解扫描功能-->

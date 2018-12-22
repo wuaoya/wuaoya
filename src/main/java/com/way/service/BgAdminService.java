@@ -10,7 +10,7 @@ public interface BgAdminService {
     //登录
     public boolean haveAname(AdminEntity adminEntity);
     public boolean trueApwd(AdminEntity adminEntity);
-
+    public AdminEntity getAdmin(AdminEntity adminEntity);
     //修改个人信息
     /*改密码*/
     public boolean oldApwd(AdminEntity adminEntity);
