@@ -32,7 +32,7 @@ public class BgAdminController {
              i=4;
              AdminEntity adminEntity1=bgAdminService.getAdmin(adminEntity);
              request.getSession().setAttribute("CURRENT_SESSION_KEY",adminEntity1);
-                 System.out.println(adminEntity1);
+//                 System.out.println(adminEntity1);
              return JSON.toJSONString(i);
             }
             i=3;

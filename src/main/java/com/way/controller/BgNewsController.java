@@ -4,12 +4,18 @@ import com.alibaba.fastjson.JSON;
 import com.way.domain.AdminEntity;
 import com.way.domain.NewsEntity;
 import com.way.service.BgNewService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller
@@ -23,11 +29,23 @@ public class BgNewsController {
         this.bgNewService = bgNewService;
     }
 //-----------------------------------------------------------------------
-//    添加新闻
+//    添加新闻(上传图片)
     @RequestMapping("/addNews")
     @ResponseBody
-    public String addnews(NewsEntity newsEntity, HttpServletRequest request){
-    AdminEntity adminEntity=(AdminEntity) request.getSession().getAttribute("CURRENT_SESSION_KEY");
+    public String addnews(NewsEntity newsEntity, @RequestParam("nimage")MultipartFile myfile, HttpServletRequest request){
+        String filename=myfile.getOriginalFilename();
+        newsEntity.setNimage("images/"+filename);
+        String path2=request.getServletContext().getRealPath("background//images");
+        File destFile=new File(path2+File.separator+filename);
+
+        try {
+            InputStream in=myfile.getInputStream();
+            FileUtils.copyInputStreamToFile(in,destFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        至此，上传图片完成
+        AdminEntity adminEntity=(AdminEntity) request.getSession().getAttribute("CURRENT_SESSION_KEY");
       newsEntity.setAid(adminEntity.getAid());
       if (bgNewService.saveNews(newsEntity)){
 //          添加成功

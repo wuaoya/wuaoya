@@ -1,10 +1,13 @@
 package com.way.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "monitor", schema = "wuaoya", catalog = "")
+@DynamicInsert(value = true)
 public class MonitorEntity {
     private int mid;
     private String mclass;
