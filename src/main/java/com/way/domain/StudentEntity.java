@@ -1,9 +1,12 @@
 package com.way.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "student", schema = "wuaoya", catalog = "")
+@DynamicInsert(value = true)
 public class StudentEntity {
     private int sid;
     private String sname;
